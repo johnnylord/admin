@@ -104,14 +104,13 @@ ZSH_PYENV_URL="https://github.com/mattberther/zsh-pyenv.git"
 
 if [ ! -d ${OH_MY_ZSH_DIR} ]; then
     git clone ${OH_MY_ZSH_URL} ${OH_MY_ZSH_DIR}
-    cp shell/aliases.zsh ${OH_MY_ZSH_CUSTOM_DIR}
-    cp shell/exports.zsh ${OH_MY_ZSH_CUSTOM_DIR}
-    cp shell/robbyrussell.zsh-theme ${OH_MY_ZSH_CUSTOM_DIR}
-
     if [ ! -d ${OH_MY_ZSH_PLUGIN_DIR} ]; then
         mkdir -p ${OH_MY_ZSH_PLUGIN_DIR}
     fi
 fi
+cp shell/aliases.zsh ${OH_MY_ZSH_CUSTOM_DIR}
+cp shell/exports.zsh ${OH_MY_ZSH_CUSTOM_DIR}
+cp shell/robbyrussell.zsh-theme ${OH_MY_ZSH_CUSTOM_DIR}
 
 if [ ! -d ${ZSH_AUTOSUGGESTION_DIR} ]; then
     git clone ${ZSH_AUTOSUGGESTION_URL} ${ZSH_AUTOSUGGESTION_DIR}
