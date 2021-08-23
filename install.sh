@@ -127,60 +127,6 @@ fi
 
 chown -R ${USERNAME}:${USERNAME} ${OH_MY_ZSH_DIR}
 
-# Install Pinyin input type (Add input method on the top right toolbar)
-# ========================================================================
-apt-get install fcitx fcitx-chewing
-
-# Change input type whenever login into the system
-XINITRC="/home/${USERNAME}/.xinitrc"
-XRESOURCE="/home/${USERNAME}/.Xresources"
-cp xserver/xinitrc ${XINITRC}
-cp xserver/Xresources ${XRESOURCE}
-chown ${USERNAME}:${USERNAME} ${XINITRC}
-chown ${USERNAME}:${USERNAME} ${XRESOURCE}
-
-# Configure i3 environment
-# =========================================================================
-apt install -y \
-            feh \
-            acpi \
-            rofi \
-            clipit \
-            locate \
-            xbacklight \
-            alsa-tools \
-            terminator \
-            libnotify-bin \
-            pulseaudio-utils \
-            fonts-font-awesome
-
-WM_CONFIG_DIR="/home/${USERNAME}/.config/i3"
-mkdir -p ${WM_CONFIG_DIR}
-cp -r i3wm/* ${WM_CONFIG_DIR}
-chown -R ${USERNAME}:${USERNAME} ${SSH_DIR}
-
-BAR_CONFIG_DIR="/home/${USERNAME}/.config/i3blocks"
-if [ ! -d ${BAR_CONFIG_DIR} ]; then
-    mkdir -p ${BAR_CONFIG_DIR}
-    cp -r i3blocks/* ${BAR_CONFIG_DIR}
-    chown -R ${USERNAME}:${USERNAME} ${BAR_CONFIG_DIR}
-fi
-
-# Install lightweight terminal
-# =========================================================================
-apt-get install -y rxvt-unicode xsel
-
-# Install perl-extensions system-wide
-PERL_EXT_DIR="/home/${USERNAME}/.urxvt/ext"
-if [ ! -d ${PERL_EXT_DIR} ]; then
-    mkdir -p ${PERL_EXT_DIR}
-    git clone "https://github.com/muennich/urxvt-perls.git" /tmp
-    cp /tmp/urxvt-perls/keyboard-select ${PERL_EXT_DIR}
-    cp /tmp/urxvt-perls/deprecated/url-select ${PERL_EXT_DIR}
-    cp /tmp/urxvt-perls/deprecated/clipboard ${PERL_EXT_DIR}
-    chown -R ${USERNAME}:${USERNAME} ${PERL_EXT_DIR}
-fi
-
 # Install Handy tools
 apt-get install -y \
     ctags \
