@@ -52,7 +52,7 @@ chown -R ${USERNAME}:${USERNAME} ${VIM_PLUG_DIR}
 
 # Install tmux
 # =====================================================================
-apt-get install tmux
+apt-get install -y tmux
 
 # Setup configuration file
 TMUX_CONF_FILE="/home/${USERNAME}/.tmux.conf"
@@ -76,7 +76,7 @@ fi
 
 # Install zsh shell
 # =====================================================================
-apt-get install zsh
+apt-get install -y zsh
 
 # Change user shell
 usermod --shell /bin/zsh ${USERNAME}
